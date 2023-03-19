@@ -1,5 +1,8 @@
 package com.uco.apireservas.domain.user;
 
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+import org.springframework.data.annotation.Id;
+
 public class User {
     private String name;
     private String lastname;
@@ -23,6 +26,10 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private logn id;*/
 
     public String getName() {
         return name;
