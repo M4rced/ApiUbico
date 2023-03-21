@@ -1,9 +1,11 @@
 package com.uco.apireservas.repository.user;
 
 import com.uco.apireservas.domain.user.User;
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+@Repository
+public interface UserRepository extends JpaRepository <User, Long>  {
+    User findByEmail(String email);
 
-public interface UserRepository extends JpaRepository<User, long> {
 }

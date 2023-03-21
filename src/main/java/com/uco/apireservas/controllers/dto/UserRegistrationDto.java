@@ -1,18 +1,7 @@
-package com.uco.apireservas.domain.user;
+package com.uco.apireservas.controllers.dto;
 
-
-import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
-import org.springframework.data.annotation.Id;
-import javax.persistence.GenerationType;
-
-
-
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+public class UserRegistrationDto {
+    private String firstName;
     private String lastname;
     private String identificationType;//Verificar si es aca o en UserType
     private long identificationNumber;
@@ -22,9 +11,14 @@ public class User {
     private String username;
     private String password;
 
-    public User(String name, String lastname, String identificationType, long identificationNumber,
-                long telephoneNumber, String email, long ucoid, String username, String password) {
-        this.name = name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public UserRegistrationDto(String firstName, String lastname, String identificationType, long identificationNumber,
+                               long telephoneNumber, String email, long ucoid, String username, String password) {
+        super();
+        this.firstName = firstName;
         this.lastname = lastname;
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
@@ -35,17 +29,8 @@ public class User {
         this.password = password;
     }
 
-
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private logn id;*/
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastname() {
