@@ -15,6 +15,9 @@ public class UserRegistrationDto {
         return firstName;
     }
 
+    public UserRegistrationDto() {
+    }
+
     public UserRegistrationDto(String firstName, String lastname, String identificationType, long identificationNumber,
                                long telephoneNumber, String email, long ucoid, String username, String password) {
         super();
