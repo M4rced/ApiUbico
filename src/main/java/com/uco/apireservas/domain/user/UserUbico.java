@@ -1,18 +1,20 @@
 package com.uco.apireservas.domain.user;
 
 
-import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+//import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+//import org.springframework.data.mongodb.core.mapping.Document;
 
+//@Document(collection = "Usuarios")
 
-@Document(collection = "Usuarios")
-public class User {
+public class UserUbico {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String lastname;
     private String identificationType;//Verificar si es aca o en UserType
@@ -23,8 +25,8 @@ public class User {
     private String username;
     private String password;
 
-    public User(String name, String lastname, String identificationType, long identificationNumber,
-                long telephoneNumber, String email, long ucoid, String username, String password) {
+    public UserUbico(String name, String lastname, String identificationType, long identificationNumber,
+                     long telephoneNumber, String email, long ucoid, String username, String password) {
         this.name = name;
         this.lastname = lastname;
         this.identificationType = identificationType;
@@ -36,6 +38,8 @@ public class User {
         this.password = password;
     }
 
+    public UserUbico() {
+    }
 
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

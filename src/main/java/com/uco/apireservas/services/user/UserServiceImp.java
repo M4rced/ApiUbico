@@ -1,6 +1,6 @@
 package com.uco.apireservas.services.user;
 
-import com.uco.apireservas.domain.user.User;
+import com.uco.apireservas.domain.user.UserUbico;
 import com.uco.apireservas.repository.user.UserRepository;
 import com.uco.apireservas.controllers.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ public class UserServiceImp implements UserService{
     private BCryptPasswordEncoder passwordEncoder;*/
 
     @Override
-    public User save(UserRegistrationDto registrationDto) {
-        User user = new User(registrationDto.getFirstName(),registrationDto.getLastname(),
+    public UserUbico save(UserRegistrationDto registrationDto) {
+        UserUbico userUbico = new UserUbico(registrationDto.getFirstName(),registrationDto.getLastname(),
                 registrationDto.getIdentificationType(),registrationDto.getIdentificationNumber(),
                 registrationDto.getTelephoneNumber(),registrationDto.getEmail(),registrationDto.getUcoid(),
                 registrationDto.getUsername(),registrationDto.getPassword());
-        return userRepository.save(user);
+        return userRepository.save(userUbico);
     }
 
 

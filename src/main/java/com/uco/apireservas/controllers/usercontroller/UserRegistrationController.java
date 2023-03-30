@@ -1,6 +1,5 @@
 package com.uco.apireservas.controllers.usercontroller;
 
-import com.uco.apireservas.domain.user.User;
 import com.uco.apireservas.services.user.UserService;
 import com.uco.apireservas.controllers.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
