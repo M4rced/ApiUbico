@@ -4,12 +4,13 @@ package com.uco.apireservas.domain.user;
 //import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Document(collection = "Usuarios")
-
+//@Entity
 public class UserUbico {
 
     @Id
