@@ -9,12 +9,12 @@ public class Jwtrequest implements Serializable {
     private String password;
 
     //need default constructor for JSON Parsing
-    public JwtRequest()
+    public Jwtrequest()
     {
 
     }
 
-    public JwtRequest(String username, String password) {
+    public Jwtrequest(String username, String password) {
         this.setUsername(username);
         this.setPassword(password);
     }

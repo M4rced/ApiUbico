@@ -20,7 +20,6 @@ public class UserRegistrationDto {
 
     public UserRegistrationDto(String firstName, String lastname, String identificationType, long identificationNumber,
                                long telephoneNumber, String email, long ucoid, String username, String password) {
-        super();
         this.firstName = firstName;
         this.lastname = lastname;
         this.identificationType = identificationType;

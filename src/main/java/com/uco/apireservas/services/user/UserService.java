@@ -5,6 +5,6 @@ import com.uco.apireservas.controllers.dto.UserRegistrationDto;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService extends UserDetailService{
+public interface UserService extends UserDetailsService{
     User save(UserRegistrationDto registrationDto);
 }
