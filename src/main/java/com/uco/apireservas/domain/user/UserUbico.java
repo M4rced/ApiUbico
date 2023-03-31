@@ -15,7 +15,7 @@ public class UserUbico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private static Integer id;
     private String name;
     private String lastname;
     private String identificationType;//Verificar si es aca o en UserType
@@ -42,9 +42,10 @@ public class UserUbico {
     public UserUbico() {
     }
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private logn id;*/
+
+    public static Integer getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

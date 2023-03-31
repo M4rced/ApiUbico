@@ -1,10 +1,16 @@
 package com.uco.apireservas.controllers.usercontroller;
 
+import com.uco.apireservas.domain.user.UserUbico;
 import com.uco.apireservas.services.user.UserService;
-import com.uco.apireservas.controllers.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/registration")
@@ -12,26 +18,33 @@ public class UserRegistrationController {
     @Autowired
     private UserService userService;
 
+    @PostMapping
+    public Mono<UserUbico> guardar (@RequestBody UserUbico userUbico){
+        UserUbico temporal = userService.create(userUbico);
 
-   /* @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
-    }*/
-
-    @GetMapping
-    public String showRegistrationForm(){
-        return "registration";
+        try{
+            return Mono.create(new URI("/registration"+userService.getId())).block();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
-    /*@PostMapping
-    public String registerUserAccount(@ModelAttribute("User") UserRegistrationDto registrationDto) {
-        userService.save(registrationDto);
-        return "redirect:/registration?success";
-    }*/
+    @GetMapping
+    public ResponseEntity<List<UserUbico>> ListarUsuario (@RequestBody UserUbico userUbico) {
+        return ResponseEntity.ok(userService.getAllUser());
 
-    @PostMapping
-    public void registerUser(@RequestBody UserRegistrationDto registrationDto){
-        userService.save(registrationDto);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<void> EliminarUsuario (@RequestBody UserUbico userUbico) {
+        userService.delete(userUbico);
+        return ResponseEntity.ok().build();
+
+    }
+
+    @GetMapping (name = "{id}")
+    public ResponseEntity<List<UserUbico>> ListarUsuario (@PathVariable ("id") Integer id){
+        return ResponseEntity.ok(userService.findById(id));
 
     }
 }

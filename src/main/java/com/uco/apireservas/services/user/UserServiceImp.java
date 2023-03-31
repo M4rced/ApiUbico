@@ -2,33 +2,35 @@ package com.uco.apireservas.services.user;
 
 import com.uco.apireservas.domain.user.UserUbico;
 import com.uco.apireservas.repository.user.UserRepository;
-import com.uco.apireservas.controllers.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+
+@Component
+
 @Service
-public class UserServiceImp implements UserService{
+class Register {
 
     @Autowired
     private UserRepository userRepository;
 
-    /*@Autowired
-    private BCryptPasswordEncoder passwordEncoder;*/
-
-    @Override
-    public UserUbico save(UserRegistrationDto registrationDto) {
-        UserUbico userUbico = new UserUbico(registrationDto.getFirstName(),registrationDto.getLastname(),
-                registrationDto.getIdentificationType(),registrationDto.getIdentificationNumber(),
-                registrationDto.getTelephoneNumber(),registrationDto.getEmail(),registrationDto.getUcoid(),
-                registrationDto.getUsername(),registrationDto.getPassword());
+    public UserUbico create(UserUbico userUbico){
         return userRepository.save(userUbico);
     }
 
+    public List<UserUbico> getAllUsers(){
+        return userRepository.findAll();
+    }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+    public void delete(UserUbico userUbico){
+        userRepository.delete(userUbico);
+    }
+
+    public Optional<UserUbico> create(Integer id){
+        return userRepository.findById(id);
     }
 }
