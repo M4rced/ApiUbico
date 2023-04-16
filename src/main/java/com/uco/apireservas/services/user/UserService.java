@@ -18,9 +18,9 @@ public interface UserService extends UserDetailsService{
 
     void delete(UserUbico userUbico);
 
-    Object findById(Integer id);
+    UserUbico findById(Integer id);
 
-    Object getAllUser();
+    List<UserUbico> getAllUser();
 
     String getId();
 

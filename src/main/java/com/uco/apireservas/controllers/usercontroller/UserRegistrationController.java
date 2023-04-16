@@ -13,37 +13,31 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("/user")
 public class UserRegistrationController {
     @Autowired
     private UserService userService;
 
     @PostMapping
-    public Mono<UserUbico> guardar (@RequestBody UserUbico userUbico){
-        UserUbico temporal = userService.create(userUbico);
-
-        try{
-            return Mono.create(new URI("/registration"+userService.getId())).block();
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+    public UserUbico guardar (@RequestBody UserUbico userUbico){
+        return userService.create(userUbico);
     }
 
-    @GetMapping
-    public ResponseEntity<List<UserUbico>> ListarUsuario (@RequestBody UserUbico userUbico) {
+    @GetMapping("/user/all")
+    public ResponseEntity<List<UserUbico>> ListarUsuario () {
         return ResponseEntity.ok(userService.getAllUser());
 
     }
 
     @DeleteMapping
-    public ResponseEntity<void> EliminarUsuario (@RequestBody UserUbico userUbico) {
+    public ResponseEntity<Object> EliminarUsuario (@RequestBody UserUbico userUbico) {
         userService.delete(userUbico);
         return ResponseEntity.ok().build();
 
     }
 
     @GetMapping (name = "{id}")
-    public ResponseEntity<List<UserUbico>> ListarUsuario (@PathVariable ("id") Integer id){
+    public ResponseEntity<UserUbico> ListarUsuario (@PathVariable ("id") Integer id){
         return ResponseEntity.ok(userService.findById(id));
 
     }

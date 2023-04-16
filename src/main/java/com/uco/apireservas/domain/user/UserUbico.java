@@ -1,21 +1,22 @@
 package com.uco.apireservas.domain.user;
 
 
-//import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-//import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.*;
 
-//@Document(collection = "Usuarios")
-//@Entity
+@Entity
+@Table(name = "usuarios")
+@Getter
+@Setter
 public class UserUbico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Integer id;
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private String name;
     private String lastname;
     private String identificationType;//Verificar si es aca o en UserType
