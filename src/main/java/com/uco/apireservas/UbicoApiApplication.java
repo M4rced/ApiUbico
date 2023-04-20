@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 
-@SpringBootApplication(scanBasePackages = "com.uco.apireservas")
+@SpringBootApplication
 public class UbicoApiApplication {
 
     public static void main(String[] args) {

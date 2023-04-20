@@ -34,7 +34,7 @@ public class UserUbico {
     private long telephoneNumber;
 
     @Column(name = "Email")
-    private String Email;
+    private String email;
 
     @Column(name = "ucoid")
     private long ucoid;
@@ -52,7 +52,7 @@ public class UserUbico {
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
         this.telephoneNumber = telephoneNumber;
-        Email = email;
+        this.email = email;
         this.ucoid = ucoid;
         this.username = username;
         this.password = password;
@@ -110,11 +110,11 @@ public class UserUbico {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public long getUcoid() {
