@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService extends UserDetailsService{
 
@@ -23,27 +22,4 @@ public interface UserService extends UserDetailsService{
     List<UserUbico> getAllUser();
 
     String getId();
-
-    @Service
-    class Register {
-
-        @Autowired
-        private UserRepository userRepository;
-
-        public UserUbico create (UserUbico userUbico){
-            return userRepository.save(userUbico);
-        }
-
-        public List<UserUbico> getAllUsers(){
-            return userRepository.findAll();
-        }
-
-        public void delete (UserUbico userUbico){
-            userRepository.delete(userUbico);
-        }
-
-        public Optional<UserUbico> create (Integer id){
-            return userRepository.findById(id);
-        }
-  }
 }

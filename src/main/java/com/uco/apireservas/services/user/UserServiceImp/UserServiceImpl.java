@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 
 @Service
-public class Register {
+public class UserServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
