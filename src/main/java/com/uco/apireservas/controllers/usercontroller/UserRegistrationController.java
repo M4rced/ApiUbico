@@ -3,14 +3,13 @@ package com.uco.apireservas.controllers.usercontroller;
 import com.uco.apireservas.domain.user.UserUbico;
 import com.uco.apireservas.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
-import java.net.URI;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -24,8 +23,8 @@ public class UserRegistrationController {
     }
 
     @GetMapping("/user/all")
-    public ResponseEntity<List<UserUbico>> ListarUsuario () {
-        return ResponseEntity.ok(userService.getAllUser());
+    public ResponseEntity<List<UserUbico>> ListarUsuarios () {
+        return ResponseEntity.ok(userService.getAllUsers());
 
     }
 
@@ -37,7 +36,7 @@ public class UserRegistrationController {
     }
 
     @GetMapping (name = "{id}")
-    public ResponseEntity<UserUbico> ListarUsuario (@PathVariable ("id") Integer id){
+    public ResponseEntity<Optional<UserUbico>> ListarUsuario (@PathVariable ("id") Integer id){
         return ResponseEntity.ok(userService.findById(id));
 
     }
